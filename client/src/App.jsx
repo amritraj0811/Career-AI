@@ -17,7 +17,9 @@ import Payment from './pages/Payment';
 import Dashboard from './pages/Dashboard';
 import AboutPage from './pages/AboutPage';
 import AdminHome from './pages/admin/AdminHome';
-import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminDashboard from './pages/admin/AdminDashboard'
+import Roadmap from './pages/roadmap/RoadMap';
+
 
 const App = () => {
   const location = useLocation();
@@ -27,11 +29,13 @@ const App = () => {
   
   const isCartPaymentPage = location.pathname === "/cart/payment";
   const isAdminPage = location.pathname.startsWith("/admin");
+
+  const isRoadMapPage = location.pathname.startsWith('/career');
   
 
   return (
     <>
-      {!isDashboard && !isAboutPage && !isComparisonTool && !isCartPaymentPage && !isAdminPage && <Navbar />}
+      {!isDashboard && !isAboutPage && !isComparisonTool && !isCartPaymentPage && !isAdminPage && !isRoadMapPage && <Navbar />}
       <Toaster richColors position="top-center" />
       <ScrollToTopButton />
       <Routes>
@@ -47,6 +51,7 @@ const App = () => {
         <Route path='/about' element={<AboutPage />} />
         <Route path='/admin' element={<AdminHome />} />
         <Route path='admin/:dashboard' element={<AdminDashboard />} />
+        <Route path='career' element={<Roadmap />} />
         <Route 
           path='/pathways/:pathwayId' 
           element={
@@ -58,7 +63,7 @@ const App = () => {
         <Route path="/not-found" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {!isAdminPage && !isCartPaymentPage && <Footer />}
+      {!isAdminPage && !isCartPaymentPage && !isRoadMapPage && <Footer />}
     </>
   );
 };
