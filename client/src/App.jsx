@@ -30,7 +30,7 @@ const App = () => {
   const isCartPaymentPage = location.pathname === "/cart/payment";
   const isAdminPage = location.pathname.startsWith("/admin");
 
-  const isRoadMapPage = location.pathname.startsWith('/career');
+  const isRoadMapPage = location.pathname === "/career";
   
 
   return (
@@ -63,7 +63,7 @@ const App = () => {
         <Route path="/not-found" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {!isAdminPage && !isCartPaymentPage && !isRoadMapPage && <Footer />}
+      {!isAdminPage && !isDashboard && !isCartPaymentPage && !isRoadMapPage && <Footer />}
     </>
   );
 };
