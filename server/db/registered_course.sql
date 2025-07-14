@@ -7,16 +7,10 @@ CREATE TABLE course (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_email VARCHAR(255) NOT NULL,
   resource_id VARCHAR(100) NOT NULL,
-  course_name VARCHAR(255),
-  price DECIMAL(10, 2)
 );
 
--- Table 3: enrolled_courses
+-- Step 3: Create the enrolled_courses table (no ID, no timestamps)
 CREATE TABLE enrolled_courses (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  user_email VARCHAR(255) NOT NULL,
-  resource_id VARCHAR(100) NOT NULL,
-  course_name VARCHAR(255),
-  price DECIMAL(10, 2),
-  enrolled_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  user_email VARCHAR(255) COLLATE utf8mb4_general_ci,
+  resource_id VARCHAR(255) COLLATE utf8mb4_general_ci
 );
