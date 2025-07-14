@@ -1,6 +1,6 @@
-# 🎓 Career Guidance Platform
+# 🎓 Career AI
 
-A full-stack career guidance platform built with **React** for the frontend, **Node.js + Express** for the backend, and **MySQL** (phpMyAdmin) as the database. It includes user authentication with **Clerk**, cart and course enrollment features, and admin content management.
+A full-stack career guidance platform built with **React** for the frontend, **Node.js + Express** for the backend, and **MySQL** (phpMyAdmin) as the database. It includes user authentication with **Clerk**, course enrollment features, admin content management, and an AI-powered chatbot that generates personalized roadmaps.
 
 ---
 
@@ -10,22 +10,28 @@ A full-stack career guidance platform built with **React** for the frontend, **N
 - 🛒 Add to Cart, Enroll in Courses
 - 📊 Compare Careers & Export PDF Reports
 - 📧 Email PDF Results to Users
-- 🔐 Admin Dashboard for Managing Posts
+- 🤖 **AI Roadmap Chatbot**: Suggests personalized career learning paths based on user input
 - 📚 Learning Pathways & My Courses
 - 🎯 Filter, Search, and Explore Career Paths
+- 🔐 **Admin Dashboard** for:
+  - 📝 Managing Posts (title, description, image)
+  - ➕ Adding New Courses
+  - ➕ Adding New Career Pathways
+  - 👥 Tracking Active Logged-In Users
 
 ---
 
 ## 🛠 Tech Stack
 
-| Layer      | Technology                  |
-|------------|------------------------------|
-| Frontend   | React, Tailwind CSS          |
-| Backend    | Node.js, Express.js          |
-| Database   | MySQL + phpMyAdmin           |
-| Auth       | Clerk.dev                    |
-| PDF/Email  | jsPDF, html-to-image, Nodemailer |
-| Hosting    | Vercel (client), Render/Railway (server) |
+| Layer        | Technology                       |
+|--------------|-----------------------------------|
+| Frontend     | React, Tailwind CSS               |
+| Backend      | Node.js, Express.js               |
+| Database     | MySQL + phpMyAdmin                |
+| Auth         | Clerk.dev                         |
+| AI/Chatbot   | OpenAI API                        |
+| PDF/Email    | jsPDF, html-to-image, Nodemailer  |
+| Hosting      | Vercel (client), Render/Railway (server) |
 
 ---
 
