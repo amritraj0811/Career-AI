@@ -45,8 +45,9 @@ export default function Roadmap() {
   const fetchHistory = async () => {
     try {
       const res = await fetch(
-        `http://localhost:3001/api/roadmap/history?email=${user?.primaryEmailAddress?.emailAddress}`
-      );
+  `${import.meta.env.VITE_API_URL}/api/roadmap/history?email=${user?.primaryEmailAddress?.emailAddress}`
+);
+
       const data = await res.json();
       if (data.success) {
         setHistory(data.history);
@@ -63,7 +64,7 @@ export default function Roadmap() {
   const deleteHistoryItem = async (id, e) => {
     e.stopPropagation();
     try {
-      const res = await fetch(`http://localhost:3001/api/roadmap/history/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/roadmap/history/${id}`, {
         method: "DELETE"
       });
       const data = await res.json();
@@ -119,15 +120,16 @@ export default function Roadmap() {
     setPrompt("");
 
     try {
-      const res = await fetch("http://localhost:3001/api/roadmap", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
-          email: user?.primaryEmailAddress?.emailAddress, 
-          prompt 
-        }),
-        signal: controller.signal
-      });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/roadmap`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ 
+    email: user?.primaryEmailAddress?.emailAddress, 
+    prompt 
+  }),
+  signal: controller.signal
+});
+
 
       const data = await res.json();
       if (data.success) {
