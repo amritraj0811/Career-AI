@@ -1,109 +1,112 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Twitter, Linkedin } from 'lucide-react';
-import { useUser } from '@clerk/clerk-react';
+import { Github, Twitter, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const { isSignedIn, user } = useUser();
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const currentYear = new Date().getFullYear();
 
-  const handleSubscribe = async (e) => {
-    e.preventDefault();
+  const socialLinks = [
+    { icon: <Github size={20} aria-label="GitHub" />, url: "#" },
+    { icon: <Twitter size={20} aria-label="Twitter" />, url: "#" },
+    { icon: <Linkedin size={20} aria-label="LinkedIn" />, url: "#" }
+  ];
 
-    if (!isSignedIn) {
-      setMessage('Please login to continue.');
-      return;
-    }
+  const quickLinks = [
+    { name: "About", path: "/about" },
+    { name: "Contact Us", path: "/contact" },
+    { name: "Privacy Policy", path: "/privacy" },
+    { name: "Terms of Service", path: "/terms" },
+    { name: "Cookies", path: "/cookies" }
+  ];
 
-    const userEmail = user?.emailAddresses[0]?.emailAddress?.toLowerCase();
-    const enteredEmail = email.trim().toLowerCase();
-
-    if (enteredEmail !== userEmail) {
-      setMessage('The entered email does not match your account email.');
-      return;
-    }
-
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/email-subscribe`, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({ email: userEmail }),
-});
-
-
-      const data = await res.json();
-
-      if (res.ok) {
-        setMessage('Subscribed successfully!');
-        setEmail('');
-      } else {
-        setMessage(data.error || 'Subscription failed.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      setMessage('Server error. Try again later.');
-    }
-  };
+  const exploreLinks = [
+    { name: "Courses", path: "/courses" },
+    { name: "Pathways", path: "/pathways" },
+    { name: "Roadmap Generator", path: "/roadmap" },
+    { name: "Dashboard", path: "/dashboard" }
+  ];
 
   return (
     <motion.footer
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="bg-gray-950 border-t border-gray-800 py-12 px-6"
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="bg-gray-900 border-t border-gray-800 text-gray-300 py-12 px-6"
     >
-      <div className="container mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-primary">CareerPath</h3>
-            <p className="text-gray-400">
-              Helping you navigate your career journey with the best pathways and resources.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Github className="w-5 h-5" /></a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
-            </div>
-          </div>
-
-          {/* Newsletter */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Stay Updated</h4>
-            <p className="text-gray-400">Subscribe to our newsletter for the latest career insights.</p>
-            <form className="flex" onSubmit={handleSubscribe}>
-              <input
-                type="email"
-                placeholder="Your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="px-4 py-2 bg-gray-900 text-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary w-full"
-              />
-              <button
-                type="submit"
-                className="bg-primary hover:bg-primary-dull text-white px-4 py-2 rounded-r-lg transition-colors"
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* Brand Information */}
+        <div className="md:col-span-2">
+          <Link to="/" className="flex items-center gap-3 mb-4 group">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center transition-transform group-hover:scale-105">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 24 24" 
+                fill="white" 
+                className="w-6 h-6"
+                aria-hidden="true"
               >
-                <Mail className="w-5 h-5" />
-              </button>
-            </form>
-            {message && <p className={`text-sm mt-2 ${message.includes('success') ? 'text-green-500' : 'text-red-500'}`}>{message}</p>}
+                <path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82Z" />
+              </svg>
+            </div>
+            <span className="text-xl font-semibold text-white tracking-tight">CareerAI</span>
+          </Link>
+          <p className="text-gray-400 text-sm leading-relaxed max-w-md">
+            Empowering career growth through AI-driven skill assessments and personalized learning pathways to help you achieve your professional goals.
+          </p>
+          <div className="flex gap-4 mt-6">
+            {socialLinks.map((social, index) => (
+              <a
+                key={index}
+                href={social.url}
+                className="text-gray-400 hover:text-white transition-colors duration-200"
+                aria-label={social.icon.props['aria-label']}
+              >
+                {social.icon}
+              </a>
+            ))}
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} CareerPath. All rights reserved.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="/privacy" className="text-gray-500 hover:text-primary text-sm transition-colors">Privacy Policy</a>
-            <a href="/terms" className="text-gray-500 hover:text-primary text-sm transition-colors">Terms of Service</a>
-            <a href="/cookies" className="text-gray-500 hover:text-primary text-sm transition-colors">Cookies</a>
-          </div>
+        {/* Navigation Links */}
+        <div className="space-y-4">
+          <h3 className="text-white font-semibold text-lg tracking-tight">Quick Links</h3>
+          <nav className="flex flex-col gap-2">
+            {quickLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="text-gray-400 hover:text-white text-sm transition-colors duration-200 w-fit"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
         </div>
+
+        {/* Explore Section */}
+        <div className="space-y-4">
+          <h3 className="text-white font-semibold text-lg tracking-tight">Explore</h3>
+          <nav className="flex flex-col gap-2">
+            {exploreLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="text-gray-400 hover:text-white text-sm transition-colors duration-200 w-fit"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </div>
+
+      {/* Copyright Section */}
+      <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-2 text-sm text-gray-500">
+        <p>© {currentYear} CareerAI. All rights reserved.</p>
+        <p className="text-center md:text-right">
+          Crafted with <span className="text-red-500">♥</span> for Smart India Hackathon
+        </p>
       </div>
     </motion.footer>
   );
