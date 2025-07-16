@@ -20,10 +20,10 @@ const Footer = () => {
   ];
 
   const exploreLinks = [
-    { name: "Courses", path: "/courses" },
+    { name: "Courses", path: "/resources" },
     { name: "Pathways", path: "/pathways" },
-    { name: "Roadmap Generator", path: "/roadmap" },
-    { name: "Dashboard", path: "/dashboard" }
+    { name: "Roadmap Generator", path: "/career" },
+    { name: "Dashboard", path: "/my-dashboard" }
   ];
 
   return (

@@ -1,24 +1,25 @@
-import Navbar from './components/Navbar';
-import { Route, Routes, useLocation } from 'react-router-dom';
-import Home from './pages/Home';
-import Footer from './components/Footer';
-import ScrollToTopButton from './components/ScrollToTopButton';
-import ComparisonToolPage from './pages/ComparisonToolPage';
-import CareerTestPage from './pages/CareerTestPage';
-import AllPathways from './pages/AllPathways';
-import { Toaster } from 'sonner';
-import PathwayDetails from './pages/PathwayDetails';
-import NotFound from './pages/NotFound';
-import ErrorBoundary from './components/ErrorBoundary';
-import AllResources from './pages/AllResources';
-import ResourceDetails from './pages/ResourceDetails';
-import Cart from './pages/Cart';
-import Payment from './pages/Payment';
-import Dashboard from './pages/Dashboard';
-import AboutPage from './pages/AboutPage';
-import AdminHome from './pages/admin/AdminHome';
+import Navbar from './components/Navbar'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import Home from './pages/Home'
+import Footer from './components/Footer'
+import ScrollToTopButton from './components/ScrollToTopButton'
+import ComparisonToolPage from './pages/ComparisonToolPage'
+import CareerTestPage from './pages/CareerTestPage'
+import AllPathways from './pages/AllPathways'
+import { Toaster } from 'sonner'
+import PathwayDetails from './pages/PathwayDetails'
+import NotFound from './pages/NotFound'
+import ErrorBoundary from './components/ErrorBoundary'
+import AllResources from './pages/AllResources'
+import ResourceDetails from './pages/ResourceDetails'
+import Cart from './pages/Cart'
+import Payment from './pages/Payment'
+import Dashboard from './pages/Dashboard'
+import AboutPage from './pages/AboutPage'
+import AdminHome from './pages/admin/AdminHome'
 import AdminDashboard from './pages/admin/AdminDashboard'
-import Roadmap from './pages/roadmap/RoadMap';
+import Roadmap from './pages/roadmap/RoadMap'
+import { CareerPage } from './pages/CareerPage'
 
 
 const App = () => {
@@ -30,7 +31,7 @@ const App = () => {
   const isCartPaymentPage = location.pathname === "/cart/payment";
   const isAdminPage = location.pathname.startsWith("/admin");
 
-  const isRoadMapPage = location.pathname === "/career";
+  const isRoadMapPage = location.pathname === "/roadmap-generator";
   
 
   return (
@@ -50,8 +51,9 @@ const App = () => {
         <Route path='/my-dashboard' element={<Dashboard />} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='/admin' element={<AdminHome />} />
-        <Route path='admin/:dashboard' element={<AdminDashboard />} />
-        <Route path='career' element={<Roadmap />} />
+        <Route path='/admin/:dashboard' element={<AdminDashboard />} />
+        <Route path='/career' element={<CareerPage />} />
+        <Route path='roadmap-generator' element={<Roadmap />} />
         <Route 
           path='/pathways/:pathwayId' 
           element={

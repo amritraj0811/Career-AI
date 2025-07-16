@@ -11,6 +11,9 @@ const adminMainRoutes = require('./routes/admin/adminMainRoute');
 
 const roadmapRoute = require("./routes/roadmap/roadmap");
 
+
+
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -23,6 +26,7 @@ setupRoutes(app, subscribedDB, registeredDB);
 app.use('/api/admin', adminMainRoutes);
 
 app.use("/api/roadmap", roadmapRoute);
+
 
 
 
