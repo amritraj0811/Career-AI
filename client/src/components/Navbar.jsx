@@ -72,7 +72,7 @@ const Navbar = () => {
         <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/career-test'>Career Test</Link>
         <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/pathways'>Pathways</Link>
         <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/resources'>Resources</Link>
-        <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/career'>My Careers</Link>
+        <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/career'>My Career</Link>
       </div>
 
       <div className='flex items-center gap-8'>
