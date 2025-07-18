@@ -72,10 +72,9 @@ const Navbar = () => {
 
         <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/pathways'>Pathways</Link>
         <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/resources'>Resources</Link>
-<<<<<<< HEAD
-=======
+
         <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/comparison-tool-page'>Career Tool</Link>
->>>>>>> ce537cd (create a Career Test Page)
+
         <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/career'>My Career</Link>
       </div>
 
