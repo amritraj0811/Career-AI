@@ -7,7 +7,7 @@ const HowItWorks = () => {
     {
       icon: <User className="w-6 h-6 text-primary" />,
       title: "1. Take Assessment",
-      description: "Complete our 10-minute AI-powered career quiz",
+      description: "Complete our AI-powered career quiz",
       delay: 0.2
     },
     {

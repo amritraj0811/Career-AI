@@ -45,9 +45,8 @@ export default function Roadmap() {
   const fetchHistory = async () => {
     try {
       const res = await fetch(
-  `${import.meta.env.VITE_API_URL}/api/roadmap/history?email=${user?.primaryEmailAddress?.emailAddress}`
-);
-
+        `${import.meta.env.VITE_API_URL}/api/roadmap/history?email=${user?.primaryEmailAddress?.emailAddress}`
+      );
       const data = await res.json();
       if (data.success) {
         setHistory(data.history);
@@ -121,15 +120,14 @@ export default function Roadmap() {
 
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/roadmap`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ 
-    email: user?.primaryEmailAddress?.emailAddress, 
-    prompt 
-  }),
-  signal: controller.signal
-});
-
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          email: user?.primaryEmailAddress?.emailAddress, 
+          prompt 
+        }),
+        signal: controller.signal
+      });
 
       const data = await res.json();
       if (data.success) {
@@ -431,7 +429,6 @@ export default function Roadmap() {
                   className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <motion.div
-                    whileHover={{ scale: 1.01 }}
                     className={`max-w-3xl rounded-2xl p-4 ${message.type === 'user' 
                       ? (darkMode ? 'bg-gradient-to-r from-blue-700 to-blue-600 text-white shadow-lg' : 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg')
                       : message.isError

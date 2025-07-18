@@ -99,10 +99,8 @@ const FAQ = () => {
           transition={{ delay: 0.5 }}
           className="mt-16 text-center"
         >
-          <p className="text-gray-400 mb-6">Still have questions?</p>
-          <button className="px-8 py-3.5 bg-transparent hover:bg-gray-800/50 border border-gray-700 rounded-full font-medium">
-            Contact Our Support Team
-          </button>
+          
+         
         </motion.div>
       </div>
     </section>

@@ -2,27 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, BarChart2, BookOpen, Clock, DollarSign } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useClerk, useUser } from '@clerk/clerk-react';
 
 const ComparisonTool = () => {
   const navigate = useNavigate();
-  const { isSignedIn } = useUser();
-  const { openSignIn } = useClerk();
-
-  const [showLoginPrompt, setShowLoginPrompt] = React.useState(false);
-
   const handleButtonClick = () => {
-    if (isSignedIn) {
-      navigate('/comparison-tool-page');
-    } else {
-      setShowLoginPrompt(true);
-    }
+    navigate('/comparison-tool-page');
+    scrollTo(0, 0);
   };
 
-  const handleLoginClick = () => {
-    setShowLoginPrompt(false);
-    openSignIn();
-  };
 
   const careers = [
     {
@@ -212,27 +199,7 @@ const ComparisonTool = () => {
           </button>
 
           {/* Login Prompt */}
-          {showLoginPrompt && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mt-4 bg-gray-800 border border-gray-700 rounded-lg p-4 max-w-md mx-auto"
-            >
-              <p className="mb-3">Please login to access the full comparison tool</p>
-              <button
-                onClick={handleLoginClick}
-                className="px-4 py-2 bg-primary hover:bg-primary-dull rounded-md font-medium"
-              >
-                Login
-              </button>
-              <button
-                onClick={() => setShowLoginPrompt(false)}
-                className="ml-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-md"
-              >
-                Cancel
-              </button>
-            </motion.div>
-          )}
+          
         </motion.div>
       </div>
     </section>

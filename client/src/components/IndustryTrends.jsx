@@ -133,17 +133,7 @@ const IndustryTrends = () => {
           viewport={{ once: false }}
           className="text-center"
         >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-6 bg-gray-800/50 border border-gray-700 rounded-xl px-8 py-6">
-            <div className="text-left">
-              <h3 className="font-bold mb-2">Get Full Industry Reports</h3>
-              <p className="text-gray-400 text-sm max-w-md">
-                Access detailed analysis of 50+ industries with salary benchmarks and hiring trends
-              </p>
-            </div>
-            <button className="flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary-dull rounded-full font-medium whitespace-nowrap shrink-0">
-              Download Reports <ArrowUpRight className="w-4 h-4" />
-            </button>
-          </div>
+         
         </motion.div>
       </div>
     </section>

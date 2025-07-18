@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronDown, BarChart2, BookOpen, Clock, DollarSign, ArrowLeft, Download, Mail } from 'lucide-react';
+import { X, ChevronDown, BarChart2, BookOpen, Clock, DollarSign, ArrowLeft, Download, Mail, Lock } from 'lucide-react';
 import * as htmlToImage from 'html-to-image';
 import { jsPDF } from 'jspdf';
 import axios from 'axios';
-import { useUser } from '@clerk/clerk-react';
+import { useUser, useSignIn } from '@clerk/clerk-react';
 import { toast, Toaster } from 'sonner';
 import { useNavigate } from 'react-router-dom';
+import BlurCircle from '../components/BlurCircle';
 
 const ComparisonToolPage = () => {
   const { user } = useUser(); 
@@ -179,36 +180,13 @@ const ComparisonToolPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 to-gray-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br pt-16 md:pt-50 from-gray-950 to-gray-900 text-white">
       
-      
+      <BlurCircle top='-80px' left='100px'/>
+      <BlurCircle top='-80px' right='120px' color='from-purple-500/20' />
+      <BlurCircle bottom='100px' right='880px' color='from-blue-500/20' />
       {/* Header */}
-      <motion.header 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-gray-900/80 border-b border-gray-800 backdrop-blur-sm py-6 sticky top-0 z-50"
-      >
-        <div className="container mx-auto px-6 flex items-center justify-between">
-          <motion.button 
-            whileHover={{ x: -3 }}
-            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            <span onClick={() => {navigate('/');scrollTo(0,0)}} className="hidden sm:inline">Back to Home</span>
-          </motion.button>
-          
-          <motion.h1 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent"
-          >
-            Career <span className="text-white">Comparison Tool</span>
-          </motion.h1>
-          
-          <div className="w-10"></div>
-        </div>
-      </motion.header>
+     
 
       <main className="container mx-auto px-6 py-12">
         {/* Career Selection */}
@@ -515,34 +493,52 @@ const ComparisonToolPage = () => {
         )}
 
         {/* Save/Share Options */}
-        {selectedCareers.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-wrap justify-center gap-6"
-          >
-            <motion.button 
-              onClick={handleExportPDF}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-gradient-to-r from-primary to-blue-600 hover:from-primary-dull hover:to-blue-500 rounded-xl font-medium flex items-center gap-3 shadow-lg"
-            >
-              <Download className="w-5 h-5" />
-              Export as PDF
-            </motion.button>
-            
-            <motion.button
-              onClick={handleSendEmail}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-xl font-medium flex items-center gap-3 shadow-lg"
-            >
-              <Mail className="w-5 h-5" />
-              Send to Email
-            </motion.button>
-          </motion.div>
-        )}
+        {/* Save/Share Options */}
+{/* Save/Share Options */}
+{selectedCareers.length > 0 && (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.6 }}
+    className="flex flex-wrap justify-center gap-6"
+  >
+    <motion.button 
+      onClick={handleExportPDF}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="px-8 py-3 bg-gradient-to-r from-primary to-blue-600 hover:from-primary-dull hover:to-blue-500 rounded-xl font-medium flex items-center gap-3 shadow-lg"
+    >
+      <Download className="w-5 h-5" />
+      Export as PDF
+    </motion.button>
+    
+    {user ? (
+      <motion.button
+        onClick={handleSendEmail}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="px-8 py-3 bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-xl font-medium flex items-center gap-3 shadow-lg"
+      >
+        <Mail className="w-5 h-5" />
+        Send to Email
+      </motion.button>
+    ) : (
+      <motion.button
+        onClick={() => window.Clerk?.openSignIn({
+          afterSignInUrl: window.location.href,
+          redirectUrl: window.location.href
+        })}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="px-8 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 rounded-xl font-medium flex items-center gap-3 shadow-lg"
+      >
+        <Mail className="w-5 h-5" />
+        <Lock className="w-5 h-5" />
+        Login to Email Report
+      </motion.button>
+    )}
+  </motion.div>
+)}
       </main>
 
       {/* Animated background elements */}

@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail, MessageSquare } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const FinalCTA = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative py-24 md:py-32 bg-gradient-to-br from-primary-dull to-primary overflow-hidden">
       {/* Background elements */}
@@ -67,6 +69,7 @@ const FinalCTA = () => {
             className="flex flex-col sm:flex-row justify-center gap-4 mb-10"
           >
             <motion.button
+            onClick={() => {navigate('/career-test'); scrollTo(0, 0);}}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 px-8 py-4 bg-white text-gray-900 hover:bg-gray-100 rounded-full font-bold shadow-lg"
@@ -74,35 +77,9 @@ const FinalCTA = () => {
               Start Free Assessment <ArrowRight className="w-5 h-5" />
             </motion.button>
             
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white hover:bg-white/10 rounded-full font-medium"
-            >
-              <MessageSquare className="w-5 h-5" /> Speak to Advisor
-            </motion.button>
+            
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: false }}
-            transition={{ delay: 0.9 }}
-            className="flex flex-col sm:flex-row justify-center gap-6 text-sm text-white/80"
-          >
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-white/80"></div>
-              No credit card required
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-white/80"></div>
-              7-day free trial
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-white/80"></div>
-              Cancel anytime
-            </div>
-          </motion.div>
         </motion.div>
       </div>
 

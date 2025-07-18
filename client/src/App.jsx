@@ -22,11 +22,11 @@ import Roadmap from './pages/roadmap/RoadMap'
 import { CareerPage } from './pages/CareerPage'
 
 
+
 const App = () => {
   const location = useLocation();
   const isDashboard = location.pathname.startsWith("/my-dashboard");
   const isAboutPage = location.pathname.startsWith("/about");
-  const isComparisonTool = location.pathname.startsWith("/comparison-tool-page");
   
   const isCartPaymentPage = location.pathname === "/cart/payment";
   const isAdminPage = location.pathname.startsWith("/admin");
@@ -36,7 +36,7 @@ const App = () => {
 
   return (
     <>
-      {!isDashboard && !isAboutPage && !isComparisonTool && !isCartPaymentPage && !isAdminPage && !isRoadMapPage && <Navbar />}
+      {!isDashboard && !isAboutPage && !isCartPaymentPage && !isAdminPage && !isRoadMapPage && <Navbar />}
       <Toaster richColors position="top-center" />
       <ScrollToTopButton />
       <Routes>
@@ -54,6 +54,7 @@ const App = () => {
         <Route path='/admin/:dashboard' element={<AdminDashboard />} />
         <Route path='/career' element={<CareerPage />} />
         <Route path='roadmap-generator' element={<Roadmap />} />
+       
         <Route 
           path='/pathways/:pathwayId' 
           element={
