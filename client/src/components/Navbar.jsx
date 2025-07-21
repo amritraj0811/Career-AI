@@ -75,11 +75,7 @@ const Navbar = () => {
 
         <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/comparison-tool-page'>Career Tool</Link>
 
-<<<<<<< HEAD
-        <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/career'>My Career</Link>
-=======
         <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/roadmap'>Roadmap AI</Link>
->>>>>>> 3b16027 (Refactor career test pages and update roadmap components)
       </div>
 
       <div className='flex items-center gap-8'>
