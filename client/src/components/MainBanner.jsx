@@ -10,14 +10,15 @@ const MainBanner = () => {
   const { openSignIn } = useClerk();
   const [showLoginPrompt, setShowLoginPrompt] = React.useState(false);
 
-  const handleCareerTestClick = () => {
-    if (isSignedIn) {
-      navigate('/career-test');
-      scrollTo(0, 0);
-    } else {
-      setShowLoginPrompt(true);
-    }
-  };
+const handleCareerTestClick = () => {
+  if (!isSignedIn) {
+    setShowLoginPrompt(true);
+    return;
+  }
+  navigate('/career-test');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 
   const handleLoginClick = () => {
     setShowLoginPrompt(false);

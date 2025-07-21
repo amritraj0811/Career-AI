@@ -4,8 +4,8 @@ import { useUser } from "@clerk/clerk-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export default function Roadmap() {
-  const { user } = useUser();
+export default function RoadmapGenerator() {
+  const { isLoaded, user } = useUser();
   const [prompt, setPrompt] = useState("");
   const [messages, setMessages] = useState([]);
   const [history, setHistory] = useState([]);
@@ -44,8 +44,10 @@ export default function Roadmap() {
 
   const fetchHistory = async () => {
     try {
+      if (!user?.primaryEmailAddress?.emailAddress) return;
+      
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/roadmap/history?email=${user?.primaryEmailAddress?.emailAddress}`
+        `${import.meta.env.VITE_API_URL}/api/roadmap/history?email=${user.primaryEmailAddress.emailAddress}`
       );
       const data = await res.json();
       if (data.success) {
@@ -81,8 +83,10 @@ export default function Roadmap() {
   };
 
   useEffect(() => {
-    if (user) fetchHistory();
-  }, [user]);
+    if (isLoaded && user) {
+      fetchHistory();
+    }
+  }, [isLoaded, user]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -195,6 +199,17 @@ export default function Roadmap() {
       minute: '2-digit'
     });
   };
+
+  if (!isLoaded) {
+    return (
+      <div className={`min-h-screen flex items-center justify-center ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
+          <p className={`mt-4 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>Loading user session...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`min-h-screen flex ${darkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
@@ -405,7 +420,7 @@ export default function Roadmap() {
                 Career Roadmap Assistant
               </h2>
               <p className={`mt-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'} max-w-md`}>
-                Describe your career goals and get a personalized roadmap to achieve them
+                {user ? `${user.firstName}, Describe your career goals and get a personalized roadmap to achieve them` : "Describe your career goals and get a personalized roadmap to achieve them"}
               </p>
               <motion.div 
                 className={`mt-6 px-4 py-2 rounded-full ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-600'} text-sm flex items-center`}
@@ -457,13 +472,18 @@ export default function Roadmap() {
                     )}
                     {message.type === 'user' && (
                       <div className="flex items-center justify-end mb-2">
-                        <span className={`text-xs ${darkMode ? 'text-blue-200' : 'text-blue-100'} mr-2`}>
-                          {formatDate(message.timestamp)}
-                        </span>
-                        <span className={`text-sm font-medium ${darkMode ? 'text-blue-200' : 'text-blue-100'}`}>
-                          You
-                        </span>
-                      </div>
+  <span className={`text-xs ${darkMode ? 'text-blue-200' : 'text-blue-100'} mr-2`}>
+    {formatDate(message.timestamp)}
+  </span>
+  
+    <img 
+      src={user.imageUrl}
+      alt="Profile"
+      className="w-5 h-5 rounded-full mr-1"
+    />
+  
+  
+</div>
                     )}
                     <div className={`whitespace-pre-wrap text-sm ${message.type === 'user' ? 'text-white' : darkMode ? 'text-gray-200' : 'text-gray-800'}`}>
                       {message.text}

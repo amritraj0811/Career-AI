@@ -5,7 +5,9 @@ export const resources = [
     description: "A beginner-friendly course that introduces the fundamentals of machine learning with hands-on projects.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Python", "Linear Algebra", "Basic Statistics"],
-    price: "$49"
+    price: "$49",
+    video: "https://www.youtube.com/embed/7eh4d6sabA0",
+    category: "Machine Learning"
   },
   {
     resourceId: "ds-course-002",
@@ -13,7 +15,9 @@ export const resources = [
     description: "Comprehensive bootcamp covering Python, data analysis, visualization, and machine learning.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Python", "Pandas", "Machine Learning"],
-    price: "$199"
+    price: "$199",
+    video: "https://www.youtube.com/embed/ua-CiDNNj30",
+    category: "Data Science"
   },
   {
     resourceId: "web-course-003",
@@ -21,7 +25,9 @@ export const resources = [
     description: "Learn to build modern web applications using HTML, CSS, JavaScript, React, Node.js, and MongoDB.",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["JavaScript", "HTML", "CSS"],
-    price: "$149"
+    price: "$149",
+    video: "https://www.youtube.com/embed/F-sFp_AvHc8",
+    category: "Web Development"
   },
   {
     resourceId: "ai-course-004",
@@ -29,7 +35,9 @@ export const resources = [
     description: "Master deep learning concepts and build neural networks using TensorFlow and Keras.",
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Python", "Machine Learning", "Neural Networks"],
-    price: "$129"
+    price: "$129",
+    video: "https://www.youtube.com/embed/tPYj3fFJGjk",
+    category: "Artificial Intelligence"
   },
   {
     resourceId: "cyber-course-005",
@@ -37,7 +45,9 @@ export const resources = [
     description: "Understand network security, threats, ethical hacking, and how to secure systems effectively.",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Networking", "Basic Linux", "Problem Solving"],
-    price: "$99"
+    price: "$99",
+    video: "https://www.youtube.com/embed/inWWhr5tnEA",
+    category: "Cybersecurity"
   },
   {
     resourceId: "cloud-course-006",
@@ -45,7 +55,9 @@ export const resources = [
     description: "Hands-on AWS course covering EC2, S3, Lambda, and other essential cloud services.",
     image: "https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Networking Basics", "Linux", "Scripting"],
-    price: "$109"
+    price: "$109",
+    video: "https://www.youtube.com/embed/sOPvXK1WU0A",
+    category: "Cloud Computing"
   },
   {
     resourceId: "blockchain-course-007",
@@ -53,7 +65,9 @@ export const resources = [
     description: "Build blockchain applications using Solidity and understand the fundamentals of decentralized apps.",
     image: "https://images.unsplash.com/photo-1621570071135-7a881b949e1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["JavaScript", "Cryptography Basics"],
-    price: "$119"
+    price: "$119",
+    video: "https://www.youtube.com/embed/gyMwXuJrbJQ",
+    category: "Blockchain"
   },
   {
     resourceId: "ux-course-008",
@@ -61,7 +75,9 @@ export const resources = [
     description: "Learn to design user-friendly interfaces and experiences using modern tools like Figma.",
     image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Creativity", "Design Thinking", "Figma"],
-    price: "$59"
+    price: "$59",
+    video: "https://www.youtube.com/embed/c9Wg6Cb_YlU",
+    category: "UI/UX Design"
   },
   {
     resourceId: "devops-course-009",
@@ -69,7 +85,9 @@ export const resources = [
     description: "Get hands-on with containerization and orchestration tools used in modern DevOps pipelines.",
     image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Linux", "Docker", "Kubernetes"],
-    price: "$139"
+    price: "$139",
+    video: "https://www.youtube.com/embed/kTp5xUtcalw",
+    category: "DevOps"
   },
   {
     resourceId: "android-course-010",
@@ -77,7 +95,9 @@ export const resources = [
     description: "Build native Android apps using Kotlin and Android Studio.",
     image: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Kotlin", "OOP", "XML"],
-    price: "$99"
+    price: "$99",
+    video: "https://www.youtube.com/embed/fis26HvvDII",
+    category: "Mobile Development"
   },
   {
     resourceId: "ios-course-011",
@@ -85,7 +105,9 @@ export const resources = [
     description: "Create sleek iOS apps using Swift and Xcode with real-world projects.",
     image: "https://images.unsplash.com/photo-1516245834210-c4c142787335?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Swift", "Xcode", "MVC"],
-    price: "$129"
+    price: "$129",
+    video: "https://www.youtube.com/embed/FcsY1YPBwzQ",
+    category: "Mobile Development"
   },
   {
     resourceId: "game-course-012",
@@ -93,7 +115,9 @@ export const resources = [
     description: "Learn how to build 2D and 3D games with Unity and C# scripting.",
     image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["C#", "Unity", "Game Physics"],
-    price: "$89"
+    price: "$89",
+    video: "https://www.youtube.com/embed/gB1F9G0JXOo",
+    category: "Game Development"
   },
   {
     resourceId: "web-course-013",
@@ -101,7 +125,9 @@ export const resources = [
     description: "A practical introduction to React.js including hooks and state management.",
     image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["JavaScript", "ES6", "HTML"],
-    price: "$79"
+    price: "$79",
+    video: "https://www.youtube.com/embed/w7ejDZ8SWv8",
+    category: "Web Development"
   },
   {
     resourceId: "web-course-014",
@@ -109,7 +135,9 @@ export const resources = [
     description: "Create REST APIs using Node.js, Express, and MongoDB.",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["JavaScript", "Express", "MongoDB"],
-    price: "$99"
+    price: "$99",
+    video: "https://www.youtube.com/embed/Oe421EPjeBE",
+    category: "Web Development"
   },
   {
     resourceId: "cloud-course-015",
@@ -117,7 +145,9 @@ export const resources = [
     description: "Understand cloud computing basics and Microsoft Azure services.",
     image: "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Cloud Concepts", "Networking"],
-    price: "$89"
+    price: "$89",
+    video: "https://www.youtube.com/embed/NKEFWyqJ5XA",
+    category: "Cloud Computing"
   },
   {
     resourceId: "cyber-course-016",
@@ -125,7 +155,9 @@ export const resources = [
     description: "Learn how ethical hackers find vulnerabilities and test systems.",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Networking", "Linux", "Tools"],
-    price: "$119"
+    price: "$119",
+    video: "https://www.youtube.com/embed/3Kq1MIfTWCE",
+    category: "Cybersecurity"
   },
   {
     resourceId: "ml-course-017",
@@ -133,7 +165,9 @@ export const resources = [
     description: "Work on text classification, sentiment analysis, and NLP tools using Python.",
     image: "https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Python", "NLP", "scikit-learn"],
-    price: "$109"
+    price: "$109",
+    video: "https://www.youtube.com/embed/X2vAabgKiuM",
+    category: "Machine Learning"
   },
   {
     resourceId: "data-course-018",
@@ -141,7 +175,9 @@ export const resources = [
     description: "Master SQL for data querying and data analysis using real datasets.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["SQL", "Data Cleaning", "Joins"],
-    price: "$69"
+    price: "$69",
+    video: "https://www.youtube.com/embed/pJqBR2TNe24",
+    category: "Data Science"
   },
   {
     resourceId: "ml-course-019",
@@ -149,7 +185,9 @@ export const resources = [
     description: "A non-technical introduction to AI, its uses, and impact.",
     image: "https://images.unsplash.com/photo-1677442135136-760c813a743c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["None"],
-    price: "$39"
+    price: "$39",
+    video: "https://www.youtube.com/embed/JMUxmLyrhSk",
+    category: "Artificial Intelligence"
   },
   {
     resourceId: "data-course-020",
@@ -157,7 +195,9 @@ export const resources = [
     description: "Create interactive dashboards and visualizations using Tableau.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Data Analysis", "Storytelling", "Charts"],
-    price: "$99"
+    price: "$99",
+    video: "https://www.youtube.com/embed/6mBtTNggkUk",
+    category: "Data Science"
   },
   {
     resourceId: "data-course-021",
@@ -165,7 +205,9 @@ export const resources = [
     description: "Learn Excel formulas, pivot tables, and analytics for business use.",
     image: "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Excel", "Data Cleaning", "Charts"],
-    price: "$49"
+    price: "$49",
+    video: "https://www.youtube.com/embed/opJgMj1IUrc",
+    category: "Data Science"
   },
   {
     resourceId: "web-course-022",
@@ -173,7 +215,9 @@ export const resources = [
     description: "Master utility-first styling with Tailwind CSS for modern web design.",
     image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["HTML", "CSS", "Responsive Design"],
-    price: "$39"
+    price: "$39",
+    video: "https://www.youtube.com/embed/mr15Xzb1Ook",
+    category: "Web Development"
   },
   {
     resourceId: "web-course-023",
@@ -181,7 +225,9 @@ export const resources = [
     description: "Level up your JavaScript skills by mastering TypeScript.",
     image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["JavaScript", "OOP"],
-    price: "$69"
+    price: "$69",
+    video: "https://www.youtube.com/embed/BwuLxPH8IDs",
+    category: "Web Development"
   },
   {
     resourceId: "cloud-course-024",
@@ -189,7 +235,9 @@ export const resources = [
     description: "Prepare for GCP Associate Engineer certification with hands-on labs.",
     image: "https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Linux", "Cloud CLI", "Networking"],
-    price: "$149"
+    price: "$149",
+    video: "https://www.youtube.com/embed/ojg2nzZOzW8",
+    category: "Cloud Computing"
   },
   {
     resourceId: "ds-course-025",
@@ -197,7 +245,9 @@ export const resources = [
     description: "Master statistical concepts like hypothesis testing, distributions, and probability.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Math", "Python"],
-    price: "$79"
+    price: "$79",
+    video: "https://www.youtube.com/embed/xxpc-HPKN28",
+    category: "Data Science"
   },
   {
     resourceId: "ai-course-026",
@@ -205,7 +255,9 @@ export const resources = [
     description: "Build your own AI chatbot using NLP libraries and Python.",
     image: "https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Python", "NLP", "Flask"],
-    price: "$89"
+    price: "$89",
+    video: "https://www.youtube.com/embed/1lwddP0KUEg",
+    category: "Artificial Intelligence"
   },
   {
     resourceId: "ml-course-027",
@@ -213,7 +265,9 @@ export const resources = [
     description: "Apply computer vision techniques to images and video using OpenCV.",
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Python", "OpenCV", "NumPy"],
-    price: "$109"
+    price: "$109",
+    video: "https://www.youtube.com/embed/oXlwWbU8l2o",
+    category: "Machine Learning"
   },
   {
     resourceId: "blockchain-course-028",
@@ -221,7 +275,9 @@ export const resources = [
     description: "Dive into NFTs, Web3, and Ethereum smart contract development.",
     image: "https://images.unsplash.com/photo-1621570071135-7a881b949e1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Solidity", "Web3.js", "Ethereum"],
-    price: "$129"
+    price: "$129",
+    video: "https://www.youtube.com/embed/gyMwXuJrbJQ",
+    category: "Blockchain"
   },
   {
     resourceId: "web-course-029",
@@ -229,7 +285,9 @@ export const resources = [
     description: "Learn SSR and SSG techniques using Next.js and React.",
     image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["React", "JavaScript", "Routing"],
-    price: "$89"
+    price: "$89",
+    video: "https://www.youtube.com/embed/__mSgDEOyv8",
+    category: "Web Development"
   },
   {
     resourceId: "ux-course-030",
@@ -237,7 +295,9 @@ export const resources = [
     description: "Learn how to build scalable design systems in Figma for UI/UX teams.",
     image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Figma", "Components", "Design Tokens"],
-    price: "$59"
+    price: "$59",
+    video: "https://www.youtube.com/embed/E6kKLaa7ct4",
+    category: "UI/UX Design"
   },
   {
     resourceId: "mobile-course-031",
@@ -246,6 +306,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Dart", "OOP", "UI Design"],
     price: "$109",
+    video: "https://www.youtube.com/embed/VPvVD8t02U8",
     category: "Mobile Development"
   },
   {
@@ -255,6 +316,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["AWS", "JavaScript", "Cloud Computing"],
     price: "$119",
+    video: "https://www.youtube.com/embed/71cd5XerKss",
     category: "Cloud Computing"
   },
   {
@@ -264,6 +326,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Java", "Distributed Systems", "HDFS"],
     price: "$129",
+    video: "https://www.youtube.com/embed/tTstLk-4V8M",
     category: "Data Science"
   },
   {
@@ -273,6 +336,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1626808642875-0aa545482dfb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Python", "Linear Algebra", "Neural Networks"],
     price: "$139",
+    video: "https://www.youtube.com/embed/JgvyzIkgxF0",
     category: "Artificial Intelligence"
   },
   {
@@ -282,6 +346,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["JavaScript", "Node.js", "GraphQL"],
     price: "$89",
+    video: "https://www.youtube.com/embed/Y0lDGjwRYKw",
     category: "Web Development"
   },
   {
@@ -291,6 +356,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Kali Linux", "Networking", "Security Tools"],
     price: "$149",
+    video: "https://www.youtube.com/embed/3Kq1MIfTWCE",
     category: "Cybersecurity"
   },
   {
@@ -300,6 +366,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["3D Modeling", "Game Design", "Blueprints"],
     price: "$99",
+    video: "https://www.youtube.com/embed/k-yxVQnu_bg",
     category: "Game Development"
   },
   {
@@ -309,6 +376,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["SQL", "Data Modeling", "Cloud Concepts"],
     price: "$119",
+    video: "https://www.youtube.com/embed/6uIeXy7Vq0s",
     category: "Data Engineering"
   },
   {
@@ -318,6 +386,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Python", "Pandas", "Statsmodels"],
     price: "$109",
+    video: "https://www.youtube.com/embed/0U0p8R3HXOA",
     category: "Machine Learning"
   },
   {
@@ -327,6 +396,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Linux", "Groovy", "Docker"],
     price: "$99",
+    video: "https://www.youtube.com/embed/FX322RVNGj4",
     category: "DevOps"
   },
   {
@@ -336,6 +406,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["JavaScript", "HTML", "CSS"],
     price: "$79",
+    video: "https://www.youtube.com/embed/videoseries?list=PL4cUxeGkcC9hlbrVO_2QFVqVPhlZmz7tO",
     category: "Web Development"
   },
   {
@@ -345,6 +416,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["React", "JavaScript", "Mobile Development"],
     price: "$119",
+    video: "https://www.youtube.com/embed/qSRrxpdMpVc",
     category: "Mobile Development"
   },
   {
@@ -354,6 +426,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["AWS/Azure/GCP", "YAML", "Cloud Networking"],
     price: "$129",
+    video: "https://www.youtube.com/embed/SLB_c_ayRMo",
     category: "Cloud Computing"
   },
   {
@@ -363,6 +436,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Python", "Distributed Systems", "SQL"],
     price: "$139",
+    video: "https://www.youtube.com/embed/U3Psq3a2qLw",
     category: "Data Engineering"
   },
   {
@@ -372,6 +446,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Python", "TensorFlow/PyTorch", "Neural Networks"],
     price: "$149",
+    video: "https://www.youtube.com/embed/OdMD96JTvyo",
     category: "Artificial Intelligence"
   },
   {
@@ -381,6 +456,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["HTML", "CSS", "ARIA"],
     price: "$89",
+    video: "https://www.youtube.com/embed/20SHvU2PKsM",
     category: "Web Development"
   },
   {
@@ -390,6 +466,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["AWS/Azure/GCP", "IAM", "Encryption"],
     price: "$139",
+    video: "https://www.youtube.com/embed/_aV6NnK5P6k",
     category: "Cybersecurity"
   },
   {
@@ -399,6 +476,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["GDScript", "Game Physics", "Animation"],
     price: "$79",
+    video: "https://www.youtube.com/embed/nAh_Kx5Zh5Q",
     category: "Game Development"
   },
   {
@@ -408,6 +486,7 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Python", "ETL", "DAGs"],
     price: "$119",
+    video: "https://www.youtube.com/embed/aTaytcxy2Ck",
     category: "Data Engineering"
   },
   {
@@ -417,6 +496,8 @@ export const resources = [
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     skillsRequired: ["Python", "Docker", "ML Pipelines"],
     price: "$129",
+    video: "https://www.youtube.com/embed/9BgIDqAzfuA",
     category: "Machine Learning"
-  }
+  },
+  
 ];

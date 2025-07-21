@@ -184,7 +184,7 @@ const ComparisonToolPage = () => {
       
       <BlurCircle top='-80px' left='100px'/>
       <BlurCircle top='-80px' right='120px' color='from-purple-500/20' />
-      <BlurCircle bottom='100px' right='880px' color='from-blue-500/20' />
+   
       {/* Header */}
      
 

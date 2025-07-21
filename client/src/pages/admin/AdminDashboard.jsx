@@ -4,6 +4,8 @@ import { User, Settings, BookOpen, Map, PlusCircle, ChevronRight, ChevronDown, L
 import { Link, useNavigate } from 'react-router-dom';
 import BlurCircle from '../../components/BlurCircle';
 import { toast } from 'sonner';
+import { resources } from '../../assets/resources';
+import { pathways } from '../../assets/pathwaysData';
 
 const AdminDashboardContent = () => {
   const navigate = useNavigate();
@@ -80,9 +82,7 @@ useEffect(() => {
 
   const sidebarItems = [
     { id: 'profile', icon: <User className="w-5 h-5" />, label: 'Admin Profile' },
-    { id: 'create-post', icon: <PlusCircle className="w-5 h-5" />, label: 'Create Post' },
-    { id: 'add-course', icon: <BookOpen className="w-5 h-5" />, label: 'Add Course' },
-    { id: 'add-pathway', icon: <Map className="w-5 h-5" />, label: 'Add Pathway' },
+    
     { id: 'settings', icon: <Settings className="w-5 h-5" />, label: 'Settings' }
   ];
 
@@ -109,7 +109,7 @@ useEffect(() => {
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-[#09090B] to-[#1A1A1E] font-sans text-white overflow-hidden">
       {/* Background elements */}
-      <BlurCircle top="10%" left="5%" color="purple" size="lg" opacity="20" />
+     
       <BlurCircle bottom="10%" right="5%" color="blue" size="lg" opacity="20" />
       
       {/* Hidden file input */}
@@ -130,14 +130,16 @@ useEffect(() => {
       >
         {/* Logo */}
         <div className="p-6 border-b border-gray-800/50">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-[#F84565] to-[#D63854] flex items-center justify-center shadow-lg">
-              <Settings className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-[#F84565] to-[#FF8A9B] bg-clip-text text-transparent">
-              Admin Panel
-            </span>
-          </Link>
+          <Link to='/' className='max-md:flex-1 flex items-center gap-2'>
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center mr-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-6 h-6">
+                        <path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82Z" />
+                      </svg>
+                    </div>
+                    <span className="text-xl max-md:hidden font-medium ">CareerAI</span>
+                  </div>
+                </Link>
         </div>
 
         {/* Admin Info */}
@@ -172,12 +174,14 @@ useEffect(() => {
 
         {/* Navigation */}
         <nav className="flex flex-col p-4 space-y-1 flex-grow">
+
           {sidebarItems.map((item) => (
             <motion.button
               key={item.id}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setActiveSection(item.id)}
+              
               className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-all ${
                 activeSection === item.id
                   ? "bg-gradient-to-r from-[#F84565]/20 to-[#D63854]/10 text-[#F84565] shadow-md"
@@ -270,7 +274,7 @@ useEffect(() => {
                       </div>
                       <div className="bg-[#1A1A1E] p-3 rounded-lg border border-gray-800/30 text-center">
                         <p className="text-sm text-gray-400">Admin Since</p>
-                        <p className="font-bold text-white">2023</p>
+                        <p className="font-bold text-white">2025</p>
                       </div>
                     </div>
                   </div>
@@ -328,15 +332,15 @@ useEffect(() => {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                       <div className="bg-[#1A1A1E] p-3 rounded-lg border border-gray-800/30 text-center">
                         <p className="text-sm text-gray-400">Courses</p>
-                        <p className="font-bold text-white">24</p>
+                        <p className="font-bold text-white">{resources.length}</p>
                       </div>
                       <div className="bg-[#1A1A1E] p-3 rounded-lg border border-gray-800/30 text-center">
                         <p className="text-sm text-gray-400">Pathways</p>
-                        <p className="font-bold text-white">8</p>
+                        <p className="font-bold text-white">{pathways.length}</p>
                       </div>
                       <div className="bg-[#1A1A1E] p-3 rounded-lg border border-gray-800/30 text-center">
                         <p className="text-sm text-gray-400">Posts</p>
-                        <p className="font-bold text-white">56</p>
+                        <p className="font-bold text-white">0</p>
                       </div>
                     </div>
                   </div>
@@ -357,15 +361,9 @@ useEffect(() => {
             >
               <div className="text-center">
                 <div className="mx-auto w-24 h-24 bg-[#1A1A1E] rounded-full flex items-center justify-center mb-6 border border-gray-800/30">
-                  {activeSection === 'create-post' && <PlusCircle className="w-10 h-10 text-[#F84565]" />}
-                  {activeSection === 'add-course' && <BookOpen className="w-10 h-10 text-[#F84565]" />}
-                  {activeSection === 'add-pathway' && <Map className="w-10 h-10 text-[#F84565]" />}
                   {activeSection === 'settings' && <Settings className="w-10 h-10 text-[#F84565]" />}
                 </div>
                 <h3 className="text-xl font-semibold mb-2">
-                  {activeSection === 'create-post' && 'Create Post Section'}
-                  {activeSection === 'add-course' && 'Add Course Section'}
-                  {activeSection === 'add-pathway' && 'Add Pathway Section'}
                   {activeSection === 'settings' && 'Settings Section'}
                 </h3>
                 <p className="text-gray-400 mb-6 max-w-md mx-auto">

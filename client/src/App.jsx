@@ -18,8 +18,9 @@ import Dashboard from './pages/Dashboard'
 import AboutPage from './pages/AboutPage'
 import AdminHome from './pages/admin/AdminHome'
 import AdminDashboard from './pages/admin/AdminDashboard'
-import Roadmap from './pages/roadmap/RoadMap'
-import { CareerPage } from './pages/CareerPage'
+import { RoadmapPage } from './pages/roadmap/RoadmapPage'
+import RoadmapGenerator from './pages/roadmap/RoadmapGenerator'
+import LearningPage from './pages/LearningPage'
 
 
 
@@ -52,8 +53,9 @@ const App = () => {
         <Route path='/about' element={<AboutPage />} />
         <Route path='/admin' element={<AdminHome />} />
         <Route path='/admin/:dashboard' element={<AdminDashboard />} />
-        <Route path='/career' element={<CareerPage />} />
-        <Route path='roadmap-generator' element={<Roadmap />} />
+        <Route path='/roadmap' element={<RoadmapPage />} />
+        <Route path='/roadmap-generator' element={<RoadmapGenerator />} />
+        <Route path='/resources/:learning-page/:resourceId' element={<LearningPage />} />
        
         <Route 
           path='/pathways/:pathwayId' 

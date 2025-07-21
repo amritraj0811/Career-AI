@@ -95,8 +95,8 @@ const Cart = () => {
     <section className="relative pt-16 md:pt-50 pb-24 bg-gradient-to-br from-gray-900 to-gray-950 px-4 sm:px-6 min-h-screen text-white overflow-hidden">
       <BlurCircle top="-100px" left="-100px" color="purple" size="lg" />
       <BlurCircle bottom="-100px" right="-100px" color="blue" size="lg" />
-      <BlurCircle top="30%" right="10%" color="indigo" size="md" opacity="30" />
-      <Toaster position="top-center" richColors />
+      
+     
 
       <div className="max-w-7xl mx-auto">
         <motion.div

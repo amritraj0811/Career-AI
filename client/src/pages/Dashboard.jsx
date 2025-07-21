@@ -69,7 +69,7 @@ const CourseCard = memo(({ course, navigate }) => {
       {/* CTA Button */}
       <button 
         className="w-full bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-700 hover:to-rose-600 text-white py-2.5 rounded-lg text-sm font-semibold shadow-md transition-all duration-200 hover:shadow-lg flex items-center justify-center gap-2"
-        onClick={() => navigate(`/course/${course.resourceId}`)}
+        onClick={() => navigate(`/resources/learning-page/${course.resourceId}`)}
       >
         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
@@ -159,17 +159,16 @@ const DashboardContent = () => {
       >
         {/* Logo with subtle animation */}
         <div className="p-6 border-b border-gray-800/50">
-          <Link to="/" className="flex items-center gap-2">
-            <motion.div 
-              whileHover={{ rotate: 5 }} 
-              className="w-10 h-10 rounded-lg bg-gradient-to-r from-rose-600 to-rose-500 flex items-center justify-center shadow-lg"
-            >
-              <Home className="w-5 h-5 text-white" />
-            </motion.div>
-            <span className="text-xl font-bold bg-gradient-to-r from-rose-500 to-rose-400 bg-clip-text text-transparent">
-              CareerAI
-            </span>
-          </Link>
+           <Link to='/' className='max-md:flex-1 flex items-center gap-2'>
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center mr-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-6 h-6">
+                        <path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82Z" />
+                      </svg>
+                    </div>
+                    <span className="text-xl max-md:hidden font-medium ">CareerAI</span>
+                  </div>
+              </Link>
         </div>
 
         {/* User Profile Section */}

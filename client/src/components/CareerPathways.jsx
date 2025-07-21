@@ -67,7 +67,7 @@ const CareerPathways = () => {
           {/* Career Cards */}
           <div 
             ref={carouselRef}
-            className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 scrollbar-hide"
+            className="flex overflow-x-auto snap-x snap-mandatory gap-6  scrollbar-hide"
             style={{ scrollSnapType: 'x mandatory' }}
           >
             {carouselPathways.map((career) => (
@@ -84,16 +84,18 @@ const CareerPathways = () => {
           </div>
 
           {/* Carousel Indicators */}
-          <div className="flex justify-center gap-2 mt-4">
-            {carouselPathways.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => scrollToIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all ${currentIndex === index ? 'bg-primary w-6' : 'bg-gray-700'}`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+          
+                  <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          className="text-center mt-16"
+        >
+          <button onClick={()=> {navigate('/pathways');scrollTo(0,0)}}
+          className="px-8 py-3.5 bg-primary hover:bg-primary-dull rounded-full font-medium shadow-lg shadow-primary/20 transition-all">
+            View All Pathways
+          </button>
+        </motion.div>
         </div>
       </div>
     </section>

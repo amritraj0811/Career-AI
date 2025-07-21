@@ -88,7 +88,10 @@ const PathwayDetails = () => {
   if (!pathway) return <LoadingSpinner fullScreen />;
 
   return (
-    <div className="min-h-screen pt-16 md:pt-50 bg-gray-950 py-12 px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+    <div className="min-h-screen pt-20 md:pt-50 bg-gray-950 py-12 px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+      <BlurCircle top='-80px' right='100px' />
+      <BlurCircle bottom='-80px' left='200px' />
+      <BlurCircle top='-10px' left='100px' />
       <div className="relative max-w-5xl mx-auto">
         <Toaster position="top-center" richColors />
         <NavigationBackButton onClick={() => {navigate('/pathways'); scrollTo(0, 0)}} />

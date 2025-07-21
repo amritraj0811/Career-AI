@@ -88,9 +88,8 @@ const AllResources = () => {
   return (
     <section className="min-h-screen pt-16 md:pt-50 bg-gradient-to-br from-gray-950 to-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <BlurCircle top='-80px' left='-80px' />
-      <BlurCircle bottom='-80px' right='200px' className="" />
-      <BlurCircle top='-100px' right='100px' />
-      <BlurCircle bottom='-100px' left='-100px' />
+     <BlurCircle top='-10px' right='100px'/>
+    
       
       <div className="max-w-7xl mx-auto">
         <motion.div

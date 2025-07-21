@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import preDefinedQuestions from '../assets/carrier-test/preDefinedQuestions';
 import { useUser } from '@clerk/clerk-react';
-import BlurCircle from '../components/BlurCircle';
 
 export default function CareerTestPage() {
   const [step, setStep] = useState('select');
@@ -12,11 +11,11 @@ export default function CareerTestPage() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [timeLeft, setTimeLeft] = useState(30); // 30 seconds timer
+  const [timeLeft, setTimeLeft] = useState(50);
   const timerRef = useRef(null);
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
-  const {user} = useUser();
+  const { user } = useUser();
 
   const domains = [
     { id: 'webdev', name: 'Web Development', icon: '🌐' },
@@ -29,16 +28,45 @@ export default function CareerTestPage() {
     { id: 'devops', name: 'DevOps', icon: '🔧' }
   ];
 
-  // Pre-defined questions for all domains (20 questions each)
-  
+  // Initialize state from session storage if available
+  useEffect(() => {
+    const savedState = sessionStorage.getItem('careerTestState');
+    if (savedState) {
+      try {
+        const parsedState = JSON.parse(savedState);
+        if (parsedState.step && parsedState.domain) {
+          setStep(parsedState.step);
+          setDomain(parsedState.domain);
+          setQuestions(parsedState.questions || []);
+          setCurrent(parsedState.current || 0);
+          setAnswers(parsedState.answers || []);
+          setResult(parsedState.result || null);
+        }
+      } catch (e) {
+        console.error('Failed to parse saved state:', e);
+        sessionStorage.removeItem('careerTestState');
+      }
+    }
+  }, []);
+
+  // Save state to session storage whenever it changes
+  useEffect(() => {
+    const stateToSave = {
+      step,
+      domain,
+      questions,
+      current,
+      answers,
+      result
+    };
+    sessionStorage.setItem('careerTestState', JSON.stringify(stateToSave));
+  }, [step, domain, questions, current, answers, result]);
 
   const extractJsonFromMarkdown = (markdownText) => {
-    // Handle both ```json and ``` cases
     const jsonMatch = markdownText.match(/```(?:json)?\n([\s\S]*?)\n```/);
     if (jsonMatch && jsonMatch[1]) {
       return jsonMatch[1];
     }
-    // If no backticks found, assume it's plain JSON
     return markdownText;
   };
 
@@ -87,13 +115,13 @@ export default function CareerTestPage() {
   // Start timer when question changes
   useEffect(() => {
     if (step === 'test' && questions.length > 0) {
-      setTimeLeft(30); // Reset timer for each new question
+      setTimeLeft(50);
       
       timerRef.current = setInterval(() => {
         setTimeLeft(prevTime => {
           if (prevTime <= 1) {
             clearInterval(timerRef.current);
-            handleAnswer(1); // Auto-submit with minimum score when time runs out
+            handleAnswer(1);
             return 0;
           }
           return prevTime - 1;
@@ -105,16 +133,14 @@ export default function CareerTestPage() {
   }, [current, questions, step]);
 
   const generateQuestions = async (domainId) => {
-    // Use pre-defined questions for faster loading
     if (preDefinedQuestions[domainId]) {
-      // Get 5 random questions from the pre-defined set
       const shuffled = [...preDefinedQuestions[domainId]].sort(() => 0.5 - Math.random());
-      const selectedQuestions = shuffled.slice(0, 5);
+      const selectedQuestions = shuffled.slice(0, 10);
       return { questions: selectedQuestions };
     }
 
     const domainName = getDomainName(domainId);
-    const prompt = `Generate 5 career assessment questions for ${domainName} with multiple choice answers. Each question should test different aspects like technical knowledge, experience level, problem-solving, and career goals.
+    const prompt = `Generate 10 career assessment questions for ${domainName} with multiple choice answers. Each question should test different aspects like technical knowledge, experience level, problem-solving, and career goals.
 
 Return the response in this exact JSON format without any markdown formatting or additional text:
 {
@@ -140,7 +166,7 @@ Make sure scores range from 1 (beginner/low) to 4 (expert/high). Questions shoul
 
 Make questions practical and relevant to current ${domainName} practices.`;
 
-    const response = await callGeminiAI(prompt, 1000);
+    const response = await callGeminiAI(prompt, 1500);
     return parseGeminiResponse(response);
   };
 
@@ -149,7 +175,6 @@ Make questions practical and relevant to current ${domainName} practices.`;
     setError(null);
 
     try {
-      // Add a small delay to show loading state
       await new Promise(resolve => setTimeout(resolve, 500));
       
       const data = await generateQuestions(domainId);
@@ -163,7 +188,7 @@ Make questions practical and relevant to current ${domainName} practices.`;
       setStep('test');
       setCurrent(0);
       setAnswers([]);
-      setTimeLeft(30);
+      setTimeLeft(50);
     } catch (err) {
       console.error('Question generation error:', err);
       setError(err.message || 'Failed to generate questions. Please try again.');
@@ -173,7 +198,7 @@ Make questions practical and relevant to current ${domainName} practices.`;
   };
 
   const handleAnswer = (score) => {
-    clearInterval(timerRef.current); // Clear timer when answer is submitted
+    clearInterval(timerRef.current);
     const updatedAnswers = [...answers, score];
     setAnswers(updatedAnswers);
     
@@ -232,73 +257,43 @@ Make recommendations specific to ${domainName} career paths.`;
     setResult(null);
     setDomain('');
     setError(null);
-    setTimeLeft(30);
+    setTimeLeft(50);
     clearInterval(timerRef.current);
+    sessionStorage.removeItem('careerTestState');
   };
 
   const getDomainName = (domainId) => {
     return domains.find(d => d.id === domainId)?.name || domainId;
   };
 
-  const handleApiKeySubmit = () => {
-    if (apiKey.trim()) {
-      setError(null);
-    } else {
-      setError('Please check your Gemini API key configuration');
-    }
-  };
+  // Clear session storage when component unmounts
+  useEffect(() => {
+    return () => {
+      sessionStorage.removeItem('careerTestState');
+    };
+  }, []);
 
-  return (
-    <div className="min-h-screen pt-16 md:pt-50  text-white flex flex-col items-center py-10 px-4">
-      <BlurCircle top='-80px' left='-100px' />
-      <BlurCircle top='-80px' right='120px' color='from-purple-500/20' />
-      <BlurCircle bottom='100px' right='880px' color='from-blue-500/20' />
-      <BlurCircle bottom='-80px' left='100px' color='from-indigo-500/20' />
-      <BlurCircle bottom='-120' right='120px' color='from-purple-500/20' />
-      <div className="w-full max-w-4xl">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            AI Career Assessment
-          </h1>
-          <p className="text-gray-300 text-lg">{user.firstName}, Discover your career readiness with Gemini AI-powered insights</p>
+  // Determine the current step to render
+  const renderStep = () => {
+    if (loading) {
+      return (
+        <div className="flex flex-col items-center justify-center py-20">
+          <div className="relative">
+            <div className="w-16 h-16 border-4 border-blue-400/30 rounded-full animate-spin"></div>
+            <div className="absolute top-0 left-0 w-16 h-16 border-4 border-transparent border-t-blue-400 rounded-full animate-spin"></div>
+          </div>
+          <p className="text-gray-400 mt-4 text-lg">
+            {step === 'select' ? 'Preparing your assessment...' : 
+             step === 'test' ? 'Processing your answer...' : 
+             'Analyzing your results...'}
+          </p>
         </div>
+      );
+    }
 
-        {/* API Key Input Modal */}
-        {!apiKey && (
-          <div className="mb-6 p-4 bg-yellow-900/50 border border-yellow-500 rounded-lg backdrop-blur-sm">
-            <p className="text-yellow-200">
-              Please add your Gemini API key to the .env file as VITE_GEMINI_API_KEY to use this assessment.
-            </p>
-          </div>
-        )}
-
-        {error && (
-          <div className="mb-6 p-4 bg-red-900/50 border border-red-500 rounded-lg backdrop-blur-sm">
-            <p className="text-red-200">{error}</p>
-            <button 
-              onClick={() => setError(null)}
-              className="mt-2 text-red-300 hover:text-white underline"
-            >
-              Dismiss
-            </button>
-          </div>
-        )}
-
-        {loading && (
-          <div className="flex flex-col items-center justify-center py-20">
-            <div className="relative">
-              <div className="w-16 h-16 border-4 border-blue-400/30 rounded-full animate-spin"></div>
-              <div className="absolute top-0 left-0 w-16 h-16 border-4 border-transparent border-t-blue-400 rounded-full animate-spin"></div>
-            </div>
-            <p className="text-gray-400 mt-4 text-lg">
-              {step === 'select' ? 'Preparing your assessment...' : 
-               step === 'test' ? 'Processing your answer...' : 
-               'Analyzing your results...'}
-            </p>
-          </div>
-        )}
-
-        {!loading && step === 'select' && apiKey && (
+    switch (step) {
+      case 'select':
+        return (
           <div className="bg-gray-800/30 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50">
             <h3 className="text-2xl font-semibold mb-8 text-center">Choose Your Career Domain</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -317,9 +312,15 @@ Make recommendations specific to ${domainName} career paths.`;
               ))}
             </div>
           </div>
-        )}
-
-        {!loading && step === 'test' && questions.length > 0 && (
+        );
+      case 'test':
+        if (questions.length === 0) {
+          // Handle case where questions are empty (shouldn't happen but just in case)
+          setError('Questions not loaded properly. Please try again.');
+          setStep('select');
+          return null;
+        }
+        return (
           <div className="bg-gray-800/30 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50">
             <div className="mb-8">
               <div className="flex justify-between text-sm text-gray-400 mb-3">
@@ -360,9 +361,15 @@ Make recommendations specific to ${domainName} career paths.`;
               ))}
             </div>
           </div>
-        )}
-
-        {!loading && step === 'result' && result && (
+        );
+      case 'result':
+        if (!result) {
+          // Handle case where result is empty (shouldn't happen but just in case)
+          setError('Results not loaded properly. Please try again.');
+          setStep('select');
+          return null;
+        }
+        return (
           <div className="bg-gray-800/30 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50">
             <div className="text-center mb-8">
               <div className="inline-block bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-4 rounded-full mb-4">
@@ -442,7 +449,46 @@ Make recommendations specific to ${domainName} career paths.`;
               </button>
             </div>
           </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br pt-16 md:pt-50 from-gray-900 via-blue-900 to-gray-900 text-white flex flex-col items-center py-10 px-4">
+      <div className="w-full max-w-4xl">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            AI Career Assessment
+          </h1>
+          <p className="text-gray-300 text-lg">
+            {user?.firstName ? `${user.firstName}, Discover your career readiness with Gemini AI-powered insights` : 'Discover your career readiness with Gemini AI-powered insights'}
+          </p>
+        </div>
+
+        {/* API Key Input Modal */}
+        {!apiKey && (
+          <div className="mb-6 p-4 bg-yellow-900/50 border border-yellow-500 rounded-lg backdrop-blur-sm">
+            <p className="text-yellow-200">
+              Please add your Gemini API key to the .env file as VITE_GEMINI_API_KEY to use this assessment.
+            </p>
+          </div>
         )}
+
+        {error && (
+          <div className="mb-6 p-4 bg-red-900/50 border border-red-500 rounded-lg backdrop-blur-sm">
+            <p className="text-red-200">{error}</p>
+            <button 
+              onClick={() => setError(null)}
+              className="mt-2 text-red-300 hover:text-white underline"
+            >
+              Dismiss
+            </button>
+          </div>
+        )}
+
+        {renderStep()}
       </div>
     </div>
   );

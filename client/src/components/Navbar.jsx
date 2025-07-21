@@ -54,7 +54,7 @@ const Navbar = () => {
               <path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82Z" />
             </svg>
           </div>
-          <span className="text-xl font-medium ">CareerAI</span>
+          <span className="text-xl max-md:hidden font-medium ">CareerAI</span>
         </div>
       </Link>
 
@@ -75,35 +75,37 @@ const Navbar = () => {
 
         <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/comparison-tool-page'>Career Tool</Link>
 
+<<<<<<< HEAD
         <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/career'>My Career</Link>
+=======
+        <Link onClick={() => { scrollTo(0, 0); setIsOpen(false); }} to='/roadmap'>Roadmap AI</Link>
+>>>>>>> 3b16027 (Refactor career test pages and update roadmap components)
       </div>
 
       <div className='flex items-center gap-8'>
-        <div className='relative max-md:hidden cursor-pointer'>
-          <ShoppingCart 
 
-onClick={() => {
-  if (!user) {
-    toast('Please Login to navigate', {
-      duration: 1000,
-      style: {
-        backgroundColor: '#dcfce7', // light green
-        color: '#166534',           // dark green text
-        border: '1px solid #86efac', // green border
-      },
-    });
-  } else {
-    navigate('/cart');
-    scrollTo(0, 0);
-  }
-}}
-
-          className='w-6 h-6' />
+        <div className='relative cursor-pointer'
+        onClick={() => {
+          if (!user) {
+          toast('Please Login to navigate', {
+          duration: 1000,
+          style: {
+          backgroundColor: '#dcfce7', // light green
+          color: '#166534',           // dark green text
+          border: '1px solid #86efac', // green border
+        },
+        });
+         } else {
+          navigate('/cart');
+          scrollTo(0, 0);
+        }
+      }}>
+      <ShoppingCart className='w-6 h-6' />
           {cartCount > 0 && (
             <span className='absolute -top-2 -right-2 text-xs bg-red-500 text-white w-5 h-5 flex items-center justify-center rounded-full'>
               {cartCount}
             </span>
-          )}
+            )}
         </div>
 
         {!user ? (
@@ -126,10 +128,7 @@ onClick={() => {
         )}
       </div>
 
-      <MenuIcon
-        onClick={() => setIsOpen(!isOpen)}
-        className='max-md:ml-4 md:hidden w-8 h-8 cursor-pointer'
-      />
+      <MenuIcon onClick={() => setIsOpen(!isOpen)} className='max-md:ml-4 md:hidden w-8 h-8 cursor-pointer'/>
     </div>
   );
 };
