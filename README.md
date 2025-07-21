@@ -21,8 +21,7 @@ A full-stack career guidance platform built with **React** for the frontend, **N
   - 📘 Track Enrolled Courses
   - 👤 Profile (image, name, email from Clerk)
 - 🔐 **Admin Dashboard**:
-  - 📝 Manage Posts (title, description, image)
-  - ➕ Add New Courses & Pathways
+  - ➕ Quick Stats (Course and Pathways)
   - 👥 Track Active Logged-In Users
 
 ---
